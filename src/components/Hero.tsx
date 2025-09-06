@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { ParticleField } from "./ParticleField";
+import { ManufacturingEffects, CNCIndicator, PrecisionGrid } from "./ManufacturingEffects";
+import { Navigation } from "./Navigation";
 import heroImage from "@/assets/hero-manufacturing.jpg";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <>
+      <Navigation />
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0"
@@ -18,18 +22,24 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-background/80" />
       </div>
 
-      {/* Particle Field */}
+      {/* Enhanced Manufacturing Effects */}
       <ParticleField />
+      <ManufacturingEffects />
 
-      {/* Tech Grid Overlay */}
+      {/* Precision Grid Overlay */}
+      <PrecisionGrid className="z-10" />
       <div className="absolute inset-0 tech-grid z-10" />
 
       {/* Content */}
       <div className="relative z-20 text-center max-w-6xl mx-auto px-6">
-        {/* Logo */}
+        {/* Logo with Manufacturing Animation */}
         <div className="mb-8">
-          <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent glow-primary mb-6">
+          <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent glow-primary mb-6 animate-machinery-hum">
             <span className="text-3xl font-bold text-background">M</span>
+          </div>
+          {/* CNC Status Indicator */}
+          <div className="flex justify-center">
+            <CNCIndicator />
           </div>
         </div>
 
@@ -59,11 +69,20 @@ export const Hero = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="tech-border glow-primary bg-gradient-to-r from-primary to-primary-glow hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-            EXPLORE CAPABILITIES
+          <Button 
+            size="lg" 
+            className="tech-border glow-primary bg-gradient-to-r from-primary to-primary-glow hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-pressure-forge"
+            onClick={() => window.location.href = '/products'}
+          >
+            VIEW PRODUCTS
           </Button>
-          <Button variant="outline" size="lg" className="tech-border border-accent text-accent hover:bg-accent hover:text-background transition-all duration-300">
-            VIEW PORTFOLIO
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="tech-border border-accent text-accent hover:bg-accent hover:text-background transition-all duration-300"
+            onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            EXPLORE CAPABILITIES
           </Button>
         </div>
 
@@ -89,5 +108,6 @@ export const Hero = () => {
         <div className="w-1 h-16 bg-gradient-to-b from-primary to-transparent rounded-full animate-pulse"></div>
       </div>
     </section>
+    </>
   );
 };

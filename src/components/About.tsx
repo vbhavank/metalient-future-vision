@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 
 export const About = () => {
   return (
-    <section className="py-24 px-6 bg-muted/10 relative">
+    <section id="about" className="py-24 px-6 bg-muted/10 relative">
       {/* Background Elements */}
       <div className="absolute inset-0 tech-grid opacity-5" />
       
