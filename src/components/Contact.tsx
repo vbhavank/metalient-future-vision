@@ -151,7 +151,7 @@ ${formData.projectDetails}
             </Card>
           </MouseParallax>
 
-          {/* Contact Information */}
+            {/* Contact Information */}
           <div className="space-y-8">
             {/* Office */}
             <MouseParallax intensity={0.2}>
@@ -178,6 +178,44 @@ ${formData.projectDetails}
                           vasunmetalient@gmail.com
                         </a>
                       </p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </MouseParallax>
+
+            {/* Google Maps Location */}
+            <MouseParallax intensity={0.15}>
+              <Card className="tech-border bg-card/50 backdrop-blur-sm overflow-hidden">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span>📍</span> FIND US
+                  </h3>
+                  <div className="relative w-full h-80 rounded-lg overflow-hidden tech-border">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5984723042847!2d77.6028!3d13.0176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d571bb0137%3A0x3e6c8e7b95c7b4e5!2sSrigandha%20Nagara%2C%20Bengaluru%2C%20Karnataka%20560091!5e0!3m2!1sen!2sin!4v1704784623456!5m2!1sen!2sin"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen={true}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="rounded-lg"
+                    ></iframe>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none"></div>
+                  </div>
+                  <div className="mt-4 grid grid-cols-1 gap-3 text-sm">
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-background/30">
+                      <span className="text-primary">🚗</span>
+                      <span>Easy highway access via Outer Ring Road</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-background/30">
+                      <span className="text-primary">🚇</span>
+                      <span>15 mins from Kengeri Metro Station</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-background/30">
+                      <span className="text-primary">✈️</span>
+                      <span>45 mins from Kempegowda International Airport</span>
                     </div>
                   </div>
                 </div>
