@@ -99,16 +99,6 @@ export const Materials = () => {
           ))}
         </div>
 
-        {/* Technical Specs */}
-        <div className="mt-16 text-center">
-          <Card className="inline-block tech-border bg-gradient-to-r from-primary/10 to-accent/10 backdrop-blur-sm">
-            <div className="p-8">
-              <div className="text-sm text-muted-foreground mb-2">TOLERANCE PRECISION</div>
-              <div className="text-3xl font-bold holographic">±0.05mm</div>
-              <div className="text-sm text-muted-foreground mt-2">Industry-leading accuracy</div>
-            </div>
-          </Card>
-        </div>
       </div>
     </section>
   );

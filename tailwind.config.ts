@@ -115,6 +115,17 @@ export default {
         "pressure-forge": {
           "0%, 100%": { transform: "scaleY(1)" },
           "50%": { transform: "scaleY(0.95)" }
+        },
+        /* Cursor-based animations */
+        "micro-bounce": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" }
+        },
+        "tilt": {
+          "0%": { transform: "rotate(0deg)" },
+          "25%": { transform: "rotate(1deg)" },
+          "75%": { transform: "rotate(-1deg)" },
+          "100%": { transform: "rotate(0deg)" }
         }
       },
       animation: {
@@ -129,7 +140,10 @@ export default {
         "cnc-scan": "cnc-scan 3s ease-in-out infinite",
         "metal-rotate": "metal-rotate 10s linear infinite",
         "machinery-hum": "machinery-hum 3s ease-in-out infinite",
-        "pressure-forge": "pressure-forge 2s ease-in-out infinite"
+        "pressure-forge": "pressure-forge 2s ease-in-out infinite",
+        /* Cursor interactions */
+        "micro-bounce": "micro-bounce 0.6s ease-in-out infinite",
+        "tilt": "tilt 2s ease-in-out infinite"
       },
     },
   },

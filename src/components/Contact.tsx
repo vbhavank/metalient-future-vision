@@ -1,9 +1,64 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { MouseParallax } from "@/components/CursorEffects";
 
 export const Contact = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    industry: "",
+    projectDetails: ""
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Create mailto link with form data
+    const subject = `Project Inquiry from ${formData.name} - ${formData.company}`;
+    const body = `
+Name: ${formData.name}
+Company: ${formData.company}
+Email: ${formData.email}
+Industry: ${formData.industry}
+
+Project Details:
+${formData.projectDetails}
+    `.trim();
+    
+    const mailtoLink = `mailto:vasunmetalient@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success toast
+    toast({
+      title: "Email Client Opened",
+      description: "Your inquiry has been prepared. Please send the email to complete your request.",
+    });
+    
+    // Reset form
+    setFormData({
+      name: "",
+      company: "",
+      email: "",
+      industry: "",
+      projectDetails: ""
+    });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
   return (
     <section id="contact" className="py-24 px-6 relative">
       <div className="max-w-7xl mx-auto">
@@ -19,79 +74,115 @@ export const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <Card className="tech-border bg-card/50 backdrop-blur-sm">
-            <div className="p-8">
-              <h3 className="text-2xl font-bold mb-6">Start Your Project</h3>
-              
-              <form className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
+          <MouseParallax intensity={0.3}>
+            <Card className="tech-border bg-card/50 backdrop-blur-sm animate-micro-bounce">
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-6">Start Your Project</h3>
+                
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Name *</label>
+                      <Input 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="tech-border bg-background/50" 
+                        placeholder="Your name"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Company</label>
+                      <Input 
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        className="tech-border bg-background/50" 
+                        placeholder="Company name"
+                      />
+                    </div>
+                  </div>
+                  
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Name</label>
+                    <label className="text-sm font-medium mb-2 block">Email *</label>
                     <Input 
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       className="tech-border bg-background/50" 
-                      placeholder="Your name"
+                      placeholder="your.email@company.com"
+                      required
                     />
                   </div>
+                  
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Company</label>
+                    <label className="text-sm font-medium mb-2 block">Industry</label>
                     <Input 
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleChange}
                       className="tech-border bg-background/50" 
-                      placeholder="Company name"
+                      placeholder="e.g., Aerospace, Medical, Automotive"
                     />
                   </div>
-                </div>
-                
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Email</label>
-                  <Input 
-                    type="email"
-                    className="tech-border bg-background/50" 
-                    placeholder="your.email@company.com"
-                  />
-                </div>
-                
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Industry</label>
-                  <Input 
-                    className="tech-border bg-background/50" 
-                    placeholder="e.g., Aerospace, Medical, Automotive"
-                  />
-                </div>
-                
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Project Details</label>
-                  <Textarea 
-                    className="tech-border bg-background/50 min-h-[120px]" 
-                    placeholder="Describe your requirements, materials, quantities, and timeline..."
-                  />
-                </div>
-                
-                <Button 
-                  type="submit"
-                  className="w-full tech-border glow-primary bg-gradient-to-r from-primary to-primary-glow hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-                >
-                  SUBMIT PROJECT INQUIRY
-                </Button>
-              </form>
-            </div>
-          </Card>
+                  
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Project Details *</label>
+                    <Textarea 
+                      name="projectDetails"
+                      value={formData.projectDetails}
+                      onChange={handleChange}
+                      className="tech-border bg-background/50 min-h-[120px]" 
+                      placeholder="Describe your requirements, materials, quantities, and timeline..."
+                      required
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit"
+                    className="w-full tech-border glow-primary bg-gradient-to-r from-primary to-primary-glow hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                  >
+                    SUBMIT PROJECT INQUIRY
+                  </Button>
+                </form>
+              </div>
+            </Card>
+          </MouseParallax>
 
           {/* Contact Information */}
           <div className="space-y-8">
             {/* Office */}
-            <Card className="tech-border bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-sm">
-              <div className="p-8">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <span>🏭</span> MANUFACTURING HUB
-                </h3>
-                <div className="space-y-3 text-muted-foreground">
-                  <p>METALIENT PVT LTD</p>
-                  <p>Peenya Industrial Area</p>
-                  <p>Bengaluru - 560058</p>
-                  <p>Karnataka, India</p>
+            <MouseParallax intensity={0.2}>
+              <Card className="tech-border bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-sm animate-tilt">
+                <div className="p-8">
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span>🏭</span> MANUFACTURING HUB
+                  </h3>
+                  <div className="space-y-3 text-muted-foreground">
+                    <p className="font-bold text-primary">METALIENT INDUSTRIES PVT LTD</p>
+                    <p>39 4th Cross, Bodu Bande Anjaneya Swamy Temple Street</p>
+                    <p>Srigandha Nagara, Bengaluru - 560091</p>
+                    <p>Karnataka, India</p>
+                    <div className="mt-4 space-y-2">
+                      <p className="flex items-center gap-2">
+                        <span>📞</span> 
+                        <a href="tel:+919886870752" className="text-primary hover:underline">
+                          +91 9886870752
+                        </a>
+                      </p>
+                      <p className="flex items-center gap-2">
+                        <span>✉️</span> 
+                        <a href="mailto:vasunmetalient@gmail.com" className="text-primary hover:underline">
+                          vasunmetalient@gmail.com
+                        </a>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </MouseParallax>
 
             {/* Capabilities Quick Facts */}
             <Card className="tech-border bg-card/50 backdrop-blur-sm">
