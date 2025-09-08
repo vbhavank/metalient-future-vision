@@ -47,7 +47,7 @@ export const Hero = () => {
         <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
           <span className="block holographic glow-text">METALIENT</span>
           <span className="block text-2xl md:text-3xl text-muted-foreground font-normal mt-4">
-            CUTTING-EDGE METAL SPINNING
+            CUTTING-EDGE R&D METAL SPINNING
           </span>
         </h1>
 
