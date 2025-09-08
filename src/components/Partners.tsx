@@ -13,31 +13,92 @@ const partners = [
     name: "DRDO",
     logo: drdoLogo,
     description: "Defense Research and Development Organisation",
-    sector: "Defense & Aerospace"
+    sector: "Defense & Research",
+    partnership: "Critical Defense Components"
   },
   {
     name: "Tata Advanced Systems",
     logo: tataLogo,
     description: "Defense and Aerospace Solutions",
-    sector: "Defense & Aerospace"
+    sector: "Defense & Aerospace",
+    partnership: "Aerospace Manufacturing"
   },
   {
     name: "Dassault Aviation",
     logo: dassaultLogo,
     description: "Aircraft Manufacturer",
-    sector: "Aviation"
+    sector: "Aviation",
+    partnership: "Aircraft Components"
   },
   {
     name: "GE Vernova",
     logo: gevernovaLogo,
     description: "Energy Infrastructure",
-    sector: "Power Generation"
+    sector: "Power Generation",
+    partnership: "Turbine Components"
   },
   {
     name: "Trelleborg",
     logo: trelleborgLogo,
     description: "Engineered Solutions Provider",
-    sector: "Industrial"
+    sector: "Industrial",
+    partnership: "Precision Engineering"
+  },
+  {
+    name: "HAL",
+    logo: null,
+    description: "Hindustan Aeronautics Limited",
+    sector: "Aerospace",
+    partnership: "Aircraft Manufacturing",
+    textLogo: "HAL"
+  },
+  {
+    name: "BHEL",
+    logo: null,
+    description: "Bharat Heavy Electricals Limited",
+    sector: "Power & Heavy Engineering",
+    partnership: "Power Plant Components",
+    textLogo: "BHEL"
+  },
+  {
+    name: "ISRO",
+    logo: null,
+    description: "Indian Space Research Organisation",
+    sector: "Space Technology",
+    partnership: "Satellite Components",
+    textLogo: "ISRO"
+  },
+  {
+    name: "L&T",
+    logo: null,
+    description: "Larsen & Toubro",
+    sector: "Engineering & Construction",
+    partnership: "Heavy Machinery",
+    textLogo: "L&T"
+  },
+  {
+    name: "Mahindra Aerospace",
+    logo: null,
+    description: "Mahindra Group - Aerospace Division",
+    sector: "Aerospace",
+    partnership: "Aircraft Components",
+    textLogo: "MAHINDRA"
+  },
+  {
+    name: "Godrej Aerospace",
+    logo: null,
+    description: "Godrej & Boyce - Aerospace Division",
+    sector: "Aerospace & Defense",
+    partnership: "Rocket Components",
+    textLogo: "GODREJ"
+  },
+  {
+    name: "BEL",
+    logo: null,
+    description: "Bharat Electronics Limited",
+    sector: "Defense Electronics",
+    partnership: "Electronic Systems",
+    textLogo: "BEL"
   }
 ];
 
@@ -56,7 +117,7 @@ export const Partners = () => {
         </div>
 
         {/* Partners Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
           {partners.map((partner, index) => (
             <MouseParallax key={partner.name} intensity={0.5}>
               <Card 
@@ -69,11 +130,19 @@ export const Partners = () => {
                 <div className="p-6 text-center relative z-10">
                   {/* Logo */}
                   <div className="relative h-20 mb-4 flex items-center justify-center">
-                    <img 
-                      src={partner.logo} 
-                      alt={partner.name}
-                      className="max-h-full max-w-full object-contain filter brightness-90 group-hover:brightness-100 transition-all duration-300"
-                    />
+                    {partner.logo ? (
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name}
+                        className="max-h-full max-w-full object-contain filter brightness-90 group-hover:brightness-100 transition-all duration-300"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg tech-border">
+                        <span className="text-lg font-bold text-primary holographic">
+                          {partner.textLogo}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Partner Info */}
