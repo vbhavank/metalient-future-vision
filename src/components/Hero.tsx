@@ -59,7 +59,7 @@ export const Hero = () => {
           </span>
           <span className="flex items-center gap-2 text-customized">
             <div className="w-2 h-2 rounded-full bg-customized animate-pulse"></div>
-            CUSTOMIZED
+            R&D
           </span>
           <span className="flex items-center gap-2 text-affordable">
             <div className="w-2 h-2 rounded-full bg-affordable animate-pulse"></div>
