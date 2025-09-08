@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import metalientLogo from "@/assets/metalient-logo.png";
+import metalientLogo from "@/assets/metalient-logo-blue.svg";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,11 +39,11 @@ export const Navigation = () => {
             className="flex items-center gap-3 cursor-pointer" 
             onClick={() => scrollToSection('/')}
           >
-            <div className="w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center overflow-hidden">
+            <div className="w-10 h-10 flex items-center justify-center">
               <img 
                 src={metalientLogo} 
                 alt="Metalient Logo" 
-                className="w-8 h-8 object-contain"
+                className="w-10 h-10 object-contain"
               />
             </div>
             <span className="text-xl font-bold holographic">METALIENT</span>

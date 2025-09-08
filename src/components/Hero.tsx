@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ParticleField } from "./ParticleField";
 import { ManufacturingEffects, CNCIndicator, PrecisionGrid } from "./ManufacturingEffects";
 import { Navigation } from "./Navigation";
+import metalientLogo from "@/assets/metalient-logo-blue.svg";
 import heroImage from "@/assets/hero-manufacturing.jpg";
 
 export const Hero = () => {
@@ -34,8 +35,12 @@ export const Hero = () => {
       <div className="relative z-20 text-center max-w-6xl mx-auto px-6">
         {/* Logo with Manufacturing Animation */}
         <div className="mb-8">
-          <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent glow-primary mb-6 animate-machinery-hum">
-            <span className="text-3xl font-bold text-background">M</span>
+          <div className="inline-flex items-center justify-center w-32 h-32 mb-6">
+            <img 
+              src={metalientLogo} 
+              alt="Metalient Logo" 
+              className="w-full h-full object-contain filter drop-shadow-2xl animate-machinery-hum"
+            />
           </div>
           {/* CNC Status Indicator */}
           <div className="flex justify-center">
